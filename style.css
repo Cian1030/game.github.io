@@ -1,0 +1,136 @@
+:root {
+    --primary-dark: #2c3e50;
+    --led-off: #34495e;
+    --led-on: #f1c40f;
+    --success: #27ae60;
+    --bg-light: #ecf0f1;
+}
+
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 導航列 */
+.game-header {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.icon-btn-hamburger { width: 50px; cursor: pointer; transition: 0.3s; }
+.icon-btn-login { height: 50px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+.icon-btn-hamburger:hover, .icon-btn-login:hover { transform: scale(1.1); }
+
+.user-info { font-weight: bold; font-size: 1.1rem; color: var(--primary-dark); }
+.btn-logout { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
+
+/* 遊戲容器 */
+.game-container {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.stats-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.led-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.led {
+    aspect-ratio: 1;
+    background-color: var(--led-off);
+    border-radius: 8px;
+    border: 3px solid #222;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.led.active {
+    background-color: var(--led-on);
+    box-shadow: 0 0 20px var(--led-on);
+    transform: scale(1.05);
+}
+
+/* 側邊欄與彈窗 */
+.sidebar {
+    position: fixed;
+    top: 0; left: -350px;
+    width: 320px; height: 100%;
+    background: white;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+    transition: 0.4s;
+    z-index: 500;
+    padding: 30px 20px;
+}
+.sidebar.open { left: 0; }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background: white; padding: 40px; border-radius: 20px; text-align: center;
+}
+
+/* 新增刪除按鈕樣式 */
+.btn-delete {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #ff6b81;
+}
+
+/* 讓表格單元格對齊 */
+td {
+    vertical-align: middle;
+}
+
+/* 按鈕類 */
+.btn-primary { padding: 12px 30px; background: var(--success); color: white; border: none; border-radius: 8px; cursor: pointer; }
+.btn-start { padding: 15px 50px; font-size: 1.5rem; background: var(--primary-dark); color: white; border: none; border-radius: 50px; cursor: pointer; }
+.btn-start:disabled { background: #ccc; cursor: not-allowed; }
+.diff-btn { padding: 8px 15px; margin: 0 5px; border: 1px solid #ddd; cursor: pointer; border-radius: 5px; }
+.diff-btn.active { background: var(--primary-dark); color: white; }
+.full-width { width: 100%; margin-top: 20px; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: center; }
